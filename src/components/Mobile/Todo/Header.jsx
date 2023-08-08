@@ -1,5 +1,6 @@
 import MoonIcon from "../../icons/moonIcon";
 
+// eslint-disable-next-line react/prop-types
 const Header = () => {
     return (
         <header className="container mx-auto pt-9 px-4 mb-8">
@@ -15,4 +16,5 @@ const Header = () => {
         </header>
     );
 };
+
 export default Header;
