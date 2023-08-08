@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import CrossItem from "../../icons/crossIcon";
 
-const Todo = ({ todo, updateTodo }) => {
+const Todo = ({ todo, updateTodo, deleteTodo }) => {
     const { id, description, state } = todo;
+
     return (
         <article className="bg-white flex gap-4 items-center overflow-hidden rounded-md p-4 border-b mx-auto">
             <button
@@ -20,7 +21,8 @@ const Todo = ({ todo, updateTodo }) => {
                 {description}
             </p>
 
-            <button>
+            <button 
+            onClick={() => deleteTodo(id)}>
                 <CrossItem />
             </button>
         </article>

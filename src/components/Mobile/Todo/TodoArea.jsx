@@ -19,6 +19,23 @@ const TodoArea = () => {
         });
         setTodos(newArray);
     };
+    const deleteAll = () =>
+    {
+        const newArray = todos.filter((todo)=> todo.state != true);
+        setTodos(newArray);
+    }
+    const countIncomplete = () =>
+    {
+        let count = 0;
+        todos.forEach(element => {
+            !element.state ? count++ : null;
+        });
+        return count;
+    };
+    const deleteTodo = (id) => {
+        const newArray = todos.filter((todo) => todo.id !== id);
+        setTodos(newArray);
+    };
     useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(todos));
     }, [todos]);
@@ -28,9 +45,17 @@ const TodoArea = () => {
             {/* Todo FORM */}
             <AddTodo addTodo={addTodo} />
             {/* Todo List (TodoItem)  Todo update TodoDelete*/}
-            <ListTodo todos={todos} updateTodo={updateTodo} />
+            <ListTodo
+                todos={todos}
+                updateTodo={updateTodo}
+                deleteTodo={deleteTodo}
+            />
             {/* Todo computed */}
-            <ComputedTodo />
+            <ComputedTodo 
+                todos = {todos}
+                deleteAll = {deleteAll}
+                countIncomplete = {countIncomplete}
+            />
         </main>
     );
 };

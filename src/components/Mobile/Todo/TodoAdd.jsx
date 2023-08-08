@@ -12,7 +12,7 @@ const AddTodo = ({ addTodo }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         addTodo({
-            id: Date.now().toString().slice(0,3),
+            id: Date.now(),
             ...todo,
         });
         console.log(description, state);
