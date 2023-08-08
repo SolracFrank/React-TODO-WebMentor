@@ -40,6 +40,7 @@ const AddTodo = ({ addTodo }) => {
                 type="text"
                 className="w-full text-gray-400 outline-none"
                 placeholder="Create a new Todo ..."
+                autoComplete="off"
                 value={todo.description}
                 onChange={handleChange}
             />

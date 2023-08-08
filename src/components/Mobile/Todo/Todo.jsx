@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import CrossItem from "../../icons/crossIcon";
+import CheckIcon from "../../icons/checkIcon";
 
 const Todo = ({ todo, updateTodo, deleteTodo }) => {
     const { id, description, state } = todo;
@@ -7,11 +8,15 @@ const Todo = ({ todo, updateTodo, deleteTodo }) => {
     return (
         <article className="bg-white flex gap-4 items-center overflow-hidden rounded-md p-4 border-b mx-auto">
             <button
-                className="rounded-full border-2 h-5 w-5 inline-block"
+                className={`${
+                    state ? " bg-cyan-500" : ""
+                } rounded-full border-2 h-5 w-5 inline-block`}
                 onClick={() => {
                     updateTodo(id);
                 }}
-            ></button>
+            >
+                {state && <CheckIcon />}
+            </button>
 
             <p
                 className={`${
@@ -21,8 +26,7 @@ const Todo = ({ todo, updateTodo, deleteTodo }) => {
                 {description}
             </p>
 
-            <button 
-            onClick={() => deleteTodo(id)}>
+            <button onClick={() => deleteTodo(id)}>
                 <CrossItem />
             </button>
         </article>

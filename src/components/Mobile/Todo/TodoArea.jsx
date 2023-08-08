@@ -19,15 +19,13 @@ const TodoArea = () => {
         });
         setTodos(newArray);
     };
-    const deleteAll = () =>
-    {
-        const newArray = todos.filter((todo)=> todo.state != true);
+    const deleteAll = () => {
+        const newArray = todos.filter((todo) => todo.state != true);
         setTodos(newArray);
-    }
-    const countIncomplete = () =>
-    {
+    };
+    const countIncomplete = () => {
         let count = 0;
-        todos.forEach(element => {
+        todos.forEach((element) => {
             !element.state ? count++ : null;
         });
         return count;
@@ -51,10 +49,10 @@ const TodoArea = () => {
                 deleteTodo={deleteTodo}
             />
             {/* Todo computed */}
-            <ComputedTodo 
-                todos = {todos}
-                deleteAll = {deleteAll}
-                countIncomplete = {countIncomplete}
+            <ComputedTodo
+                todos={todos}
+                deleteAll={deleteAll}
+                countIncomplete={countIncomplete}
             />
         </main>
     );
