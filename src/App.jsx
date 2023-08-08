@@ -14,8 +14,11 @@ const App = () => {
                         <MoonIcon />
                     </button>
                 </div>
+            </header>
 
-                <form className="flex gap-4 items-center overflow-hidden rounded-md py-4 px-4 mt-8 bg-white">
+            <main className="container mx-auto mt-8 px-4">
+                {/* Todo FORM */}
+                <form className="flex gap-4 items-center overflow-hidden rounded-md py-4 px-4 my-8 bg-white">
                     <span className="rounded-full border-2 h-5 w-5 inline-block"></span>
                     <input
                         type="text"
@@ -23,9 +26,7 @@ const App = () => {
                         placeholder="Create a new Todo ..."
                     />
                 </form>
-            </header>
-
-            <main className="container mx-auto mt-8 px-4">
+                {/* Todo List (TodoItem)  Todo update TodoDelete*/}
                 <article className="bg-white flex gap-4 items-center overflow-hidden rounded-md p-4 border-b mx-auto">
                     <button className="rounded-full border-2 h-5 w-5 inline-block"></button>
                     <p className="text-gray-400 inline-block grow mx-4">
@@ -36,14 +37,13 @@ const App = () => {
                         <CrossItem />
                     </button>
                 </article>
-                
-
+                {/* Todo computed */}
                 <section className="bg-white flex gap-4 items-center overflow-hidden rounded-md p-4 border-b mx-auto">
                     <p className="grow text-gray-400"> 5 Items left</p>
                     <p className=" text-gray-400"> Clear completed</p>
                 </section>
             </main>
-
+            {/* Todo Filter */}
             <section className="container mx-auto mt-8 px-4">
                 <article className="bg-white flex gap-4 items-center overflow-hidden rounded-md p-4 border-b mx-auto">
                     <div className="mx-auto">
@@ -59,9 +59,10 @@ const App = () => {
                     </div>
                 </article>
             </section>
-            <section className="container mx-auto mt-8 px-4 bg-red-300 flex-grow flex flex-col justify-center">
-                <p>Drag and drop to reorder list</p>
-            </section>
+            {/* Footer */}
+            <p className="text-center mt-8 text-gray-600">
+                Drag and drop to reorder list
+            </p>
         </div>
     );
 };
