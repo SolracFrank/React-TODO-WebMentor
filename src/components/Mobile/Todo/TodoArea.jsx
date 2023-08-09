@@ -1,11 +1,29 @@
 import AddTodo from "./TodoAdd";
 import ListTodo from "./ListTodo";
 import ComputedTodo from "./ComputedTodo";
+import FilterTodo from "./FilterTodo";
 import { useState, useEffect } from "react";
 
 const initialState = JSON.parse(localStorage.getItem("todos")) || [];
 const TodoArea = () => {
     const [todos, setTodos] = useState(initialState);
+    const [filter, setFilter] = useState("all");
+    const FilterTodos = () => {
+        switch (filter) {
+            case "all":
+                return todos;
+            case "completed":
+                return todos.filter((todo) => todo.state);
+            case "active":
+                return todos.filter((todo) => !todo.state);
+            default:
+                return todos;
+        }
+    };
+    const SetFilter = (x) =>
+    {
+        setFilter(x);
+    }
 
     const addTodo = (todo) => {
         setTodos([...todos, todo]);
@@ -44,7 +62,7 @@ const TodoArea = () => {
             <AddTodo addTodo={addTodo} />
             {/* Todo List (TodoItem)  Todo update TodoDelete*/}
             <ListTodo
-                todos={todos}
+                todos={FilterTodos()}
                 updateTodo={updateTodo}
                 deleteTodo={deleteTodo}
             />
@@ -54,6 +72,8 @@ const TodoArea = () => {
                 deleteAll={deleteAll}
                 countIncomplete={countIncomplete}
             />
+            <FilterTodo SetFilter = {SetFilter}/>
+            
         </main>
     );
 };
