@@ -29,7 +29,7 @@ const AddTodo = ({ addTodo }) => {
     return (
         <form
             onSubmit={handleSubmit}
-            className="flex gap-4 items-center overflow-hidden rounded-md py-4 px-4 my-8 bg-white"
+            className="flex gap-4 items-center overflow-hidden rounded-md py-4 px-4 my-8 bg-white dark:bg-black"
         >
             <button type="submit">
                 <span className="rounded-full border-2 h-5 w-5 inline-block"></span>
@@ -38,7 +38,7 @@ const AddTodo = ({ addTodo }) => {
             <input
                 name="description"
                 type="text"
-                className="w-full text-gray-400 outline-none"
+                className="w-full text-gray-400 dark:text-gray-200 dark:bg-black outline-none dark:placeholder-rose-50"
                 placeholder="Create a new Todo ..."
                 autoComplete="off"
                 value={todo.description}

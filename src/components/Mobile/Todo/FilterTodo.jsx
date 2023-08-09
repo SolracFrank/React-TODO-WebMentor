@@ -6,7 +6,7 @@ const FilterTodo = ({SetFilter}) => {
     return (
         <>
         <section className="container mx-auto mt-8 px-4">
-            <article className="bg-white flex gap-4 items-center overflow-hidden rounded-md p-4 border-b mx-auto">
+            <article className="bg-white dark:bg-gray-800 dark:text-gray-200 flex gap-4 items-center overflow-hidden rounded-md p-4 border-b mx-auto">
                 <div className="mx-auto">
                     <FilterAll SetFilter={SetFilter}/>
                     <FilterCompleted SetFilter={SetFilter}/>
@@ -14,7 +14,7 @@ const FilterTodo = ({SetFilter}) => {
                 </div>
             </article>
         </section>
-        <p className="text-center mt-8 text-gray-600">
+        <p className="text-center mt-8 text-gray-600 dark:text-gray-200">
             Drag and drop to reorder list
         </p>
         </>
