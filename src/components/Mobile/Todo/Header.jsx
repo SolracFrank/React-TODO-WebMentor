@@ -4,21 +4,24 @@ import { useState, useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
 const Header = () => {
-    const initialState = localStorage.getItem("theme").toString() || [];
+    const initialState = localStorage.getItem("theme") || "light";
 
     const [theme, setTheme] = useState(initialState);
 
     useEffect(() => {
         localStorage.setItem("theme", theme);
+        document.documentElement.classList.remove("light", "dark");
+        document.documentElement.classList.add(`${theme}`);
     }, [theme]);
 
     function HandleClickToggleTheme() {
-        let selectTheme = theme;
-        selectTheme = selectTheme == "light" ? "dark" : "light";
-        setTheme(selectTheme);
-        window.location.reload();
+        
+        setTheme(prevTheme => (prevTheme == "light" ? "dark" : "light"));
+
+
     }
     return (
+        
         <header className="container mx-auto pt-9 px-4 mb-8">
             <div className="flex justify-between text-white">
                 <h1 className="uppercase text-3xl font-semibold tracking-[0.3em]">
