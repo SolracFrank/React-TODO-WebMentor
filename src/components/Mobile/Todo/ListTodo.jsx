@@ -3,11 +3,16 @@ import Todo from "./Todo";
 // eslint-disable-next-line no-unused-vars
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
-const ListTodo = ({ todos, updateTodo, deleteTodo }) => {
+const ListTodo = ({ todos, updateTodo, deleteTodo, SetTodos }) => {
     const handleDragEnd = (result) => {
         if (!result.destination) return;
         const startIndex = result.source.index;
         const endIndex = result.destination.index;
+        const copyTodos = [...todos];
+        const [reorderItem] = copyTodos.splice(startIndex, 1);
+        copyTodos.splice(endIndex, 0, reorderItem);
+        SetTodos(copyTodos);
+        
     };
     return (
         <DragDropContext onDragEnd={handleDragEnd}>

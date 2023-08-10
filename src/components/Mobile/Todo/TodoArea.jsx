@@ -65,6 +65,7 @@ const TodoArea = () => {
                 todos={FilterTodos()}
                 updateTodo={updateTodo}
                 deleteTodo={deleteTodo}
+                SetTodos={setTodos}
             />
             {/* Todo computed */}
             <ComputedTodo
