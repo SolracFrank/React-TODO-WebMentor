@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 // eslint-disable-next-line react/prop-types
 const Header = () => {
     const initialState = localStorage.getItem("theme") || "light";
+  
 
     const [theme, setTheme] = useState(initialState);
 
@@ -15,13 +16,9 @@ const Header = () => {
     }, [theme]);
 
     function HandleClickToggleTheme() {
-        
-        setTheme(prevTheme => (prevTheme == "light" ? "dark" : "light"));
-
-
+        setTheme((prevTheme) => (prevTheme == "light" ? "dark" : "light"));
     }
     return (
-        
         <header className="container mx-auto pt-9 px-4 mb-8">
             <div className="flex justify-between text-white">
                 <h1 className="uppercase text-3xl font-semibold tracking-[0.3em]">
@@ -32,8 +29,11 @@ const Header = () => {
                     className="bg-transparent"
                     onClick={HandleClickToggleTheme}
                 >
-                    {theme == "light" && <MoonIcon fill="#fff" />}
-                    {theme == "dark" && <SunIcon fill="#fff" />}
+                    {theme === "light" ? (
+                        <MoonIcon fill="#fff" />
+                    ) : (
+                        <SunIcon fill="#fff" />
+                    )}
                 </button>
             </div>
         </header>

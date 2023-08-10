@@ -1,0 +1,18 @@
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+
+const ListItems = ({ items, update, delete }) => {
+    return (
+        <DragDropContext>
+            <Droppable droppableId="items">
+                {(droppableProvider) =>
+                    items.map((item) => (
+                        <item
+                            key={item.id}
+                        />
+                    ))
+                }
+            </Droppable>
+        </DragDropContext>
+    );
+};
+export default ListItems;
