@@ -4,8 +4,13 @@ import Todo from "./Todo";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
 const ListTodo = ({ todos, updateTodo, deleteTodo }) => {
+    const handleDragEnd = (result) => {
+        if (!result.destination) return;
+        const startIndex = result.source.index;
+        const endIndex = result.destination.index;
+    };
     return (
-        <DragDropContext>
+        <DragDropContext onDragEnd={handleDragEnd}>
             <Droppable droppableId="todos">
                 {(droppableProvider) => (
                     <div
@@ -19,18 +24,21 @@ const ListTodo = ({ todos, updateTodo, deleteTodo }) => {
                                 draggableId={`${todo.id}`}
                             >
                                 {(draggableProvider) => (
-                                    <div ref={draggableProvider.innerRef}
-                                    {...draggableProvider.draggableProps}
-                                    {...draggableProvider.dragHandleProps}>
+                                    <div
+                                        ref={draggableProvider.innerRef}
+                                        {...draggableProvider.draggableProps}
+                                        {...draggableProvider.dragHandleProps}
+                                    >
                                         <Todo
                                             todo={todo}
                                             updateTodo={updateTodo}
                                             deleteTodo={deleteTodo}
-                                        />{" "}
+                                        />
                                     </div>
                                 )}
                             </Draggable>
                         ))}
+                        {droppableProvider.placeholder}
                     </div>
                 )}
             </Droppable>
