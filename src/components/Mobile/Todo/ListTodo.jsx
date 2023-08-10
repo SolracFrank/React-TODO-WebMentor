@@ -19,14 +19,15 @@ const ListTodo = ({ todos, updateTodo, deleteTodo }) => {
                                 draggableId={`${todo.id}`}
                             >
                                 {(draggableProvider) => (
-                                    <Todo
-                                        ref={draggableProvider.innerRef}
-                                        {...draggableProvider.draggableProps}
-                                        {...draggableProvider.dragHandleProps}
-                                        todo={todo}
-                                        updateTodo={updateTodo}
-                                        deleteTodo={deleteTodo}
-                                    />
+                                    <div ref={draggableProvider.innerRef}
+                                    {...draggableProvider.draggableProps}
+                                    {...draggableProvider.dragHandleProps}>
+                                        <Todo
+                                            todo={todo}
+                                            updateTodo={updateTodo}
+                                            deleteTodo={deleteTodo}
+                                        />{" "}
+                                    </div>
                                 )}
                             </Draggable>
                         ))}
