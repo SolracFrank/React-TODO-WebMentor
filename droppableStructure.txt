@@ -1,16 +1,46 @@
+
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
-const ListItems = ({ items, update, delete }) => {
+const List = ({ Items,SetItems }) => {
+    const handleDragEnd = (result) => {
+        if (!result.destination) return;
+        const startIndex = result.source.index;
+        const endIndex = result.destination.index;
+        const copyItems = [...Items];
+        const [reorderItem] = copyItems.splice(startIndex, 1);
+        copyItems.splice(endIndex, 0, reorderItem);
+        SetItems(copyItems);
+    };
     return (
-        <DragDropContext>
+        <DragDropContext onDragEnd={handleDragEnd}>
             <Droppable droppableId="items">
-                {(droppableProvider) =>
-                    items.map((item) => (
-                        <item
-                            key={item.id}
-                        />
-                    ))
-                }
+                {(droppableProvider) => (
+                    <div
+                        ref={droppableProvider.innerRef}
+                        {...droppableProvider.droppableProps}
+                    >
+                        {items.map((item, index) => (
+                            <Draggable
+                                index={index}
+                                key={item.id}
+                                draggableId={`${item.id}`}
+                            >
+                                {(draggableProvider) => (
+                                    <div
+                                        ref={draggableProvider.innerRef}
+                                        {...draggableProvider.draggableProps}
+                                        {...draggableProvider.dragHandleProps}
+                                    >
+                                        <Item
+                                            item={item}
+                                        />
+                                    </div>
+                                )}
+                            </Draggable>
+                        ))}
+                        {droppableProvider.placeholder}
+                    </div>
+                )}
             </Droppable>
         </DragDropContext>
     );

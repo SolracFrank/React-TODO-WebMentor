@@ -2,12 +2,17 @@
 /* eslint-disable react/prop-types */
 import CrossItem from "../../icons/crossIcon";
 import CheckIcon from "../../icons/checkIcon";
+import { forwardRef } from "react";
 
-const Todo = ({ todo, updateTodo, deleteTodo }) => {
+const Todo = forwardRef(({ todo, updateTodo, deleteTodo, ...props }, ref) => {
     const { id, description, state } = todo;
 
     return (
-        <article className="bg-white  flex gap-4 items-center overflow-hidden rounded-md p-4 border-b mx-auto dark:bg-gray-600">
+        <article
+            {...props}
+            ref={ref}
+            className="bg-white  flex gap-4 items-center overflow-hidden rounded-md p-4 border-b mx-auto dark:bg-gray-600"
+        >
             <button
                 className={`${
                     state ? " bg-cyan-500 dark:bg-purple-600" : ""
@@ -35,6 +40,6 @@ const Todo = ({ todo, updateTodo, deleteTodo }) => {
             </button>
         </article>
     );
-};
+});
 
 export default Todo;

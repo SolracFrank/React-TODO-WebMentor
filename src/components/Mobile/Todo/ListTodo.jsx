@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import Todo from "./Todo";
-// eslint-disable-next-line no-unused-vars
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
 const ListTodo = ({ todos, updateTodo, deleteTodo, SetTodos }) => {
@@ -12,7 +11,6 @@ const ListTodo = ({ todos, updateTodo, deleteTodo, SetTodos }) => {
         const [reorderItem] = copyTodos.splice(startIndex, 1);
         copyTodos.splice(endIndex, 0, reorderItem);
         SetTodos(copyTodos);
-        
     };
     return (
         <DragDropContext onDragEnd={handleDragEnd}>
@@ -29,17 +27,14 @@ const ListTodo = ({ todos, updateTodo, deleteTodo, SetTodos }) => {
                                 draggableId={`${todo.id}`}
                             >
                                 {(draggableProvider) => (
-                                    <div
+                                    <Todo
                                         ref={draggableProvider.innerRef}
                                         {...draggableProvider.draggableProps}
                                         {...draggableProvider.dragHandleProps}
-                                    >
-                                        <Todo
-                                            todo={todo}
-                                            updateTodo={updateTodo}
-                                            deleteTodo={deleteTodo}
-                                        />
-                                    </div>
+                                        todo={todo}
+                                        updateTodo={updateTodo}
+                                        deleteTodo={deleteTodo}
+                                    />
                                 )}
                             </Draggable>
                         ))}
